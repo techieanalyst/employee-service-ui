@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
+import {EmployeeService} from './employee.service';
+import { Observable } from 'rxjs';
+import { Employee } from './employee';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +11,15 @@ import {HttpClient} from '@angular/common/http'
 })
 export class AppComponent {
   title = 'app';
+  obsEmploy: Observable<Employee[]>;
 
-  constructor(private http: HttpClient) {
 
+  constructor(private http: HttpClient, private employeeService: EmployeeService) {
   }
 
   ngOnInit() {
-    this.http.get('http://localhost:8080/employee-service/v1/employees/younger/than/25', {responseType: 'json'});
+    this.obsEmploy = this.employeeService.sortEmployeeListByAttribute('salary');
+    //    this.http.get('http://localhost:8080/employee-service/v1/employees/younger/than/25', {responseType: 'json'});
   }
 
 }

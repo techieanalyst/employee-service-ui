@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {trigger, style, transition, animate, keyframes, query, stagger} from '@angular/animations';
 import {DataService} from '../data.service';
+import { Observable } from 'rxjs';
+import { Employee } from '../employee';
+import {HttpClient} from '@angular/common/http';
+import {EmployeeService} from '../employee.service';
 
 @Component({
   selector: 'app-home',
@@ -35,10 +39,12 @@ export class HomeComponent implements OnInit {
   btnText: string = 'Add an Item';    // Add this line
   goalText: string = 'My first life goal';
   goals = [];
+  obsEmploy: Observable<Employee[]>;
 
-  constructor(private _data: DataService) {}
+  constructor(private _data: DataService, private employeeService: EmployeeService, private http: HttpClient) {}
 
   ngOnInit() {
+    this.obsEmploy = this.employeeService.sortEmployeeListByAttribute('salary');
     this.itemCount = this.goals.length;
     this._data.goal.subscribe(res => this.goals = res);
     this._data.changeGoal(this.goals);

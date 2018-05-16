@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
 import { DataService } from './data.service';
+import { EmployeeService } from './employee.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 	FormsModule,
 	BrowserAnimationsModule
   ],
-  providers: [DataService],
+  providers: [DataService,
+  	EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

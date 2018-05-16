@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
+import { DataService } from './data.service';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +22,10 @@ import { AboutComponent } from './about/about.component';
     BrowserModule,
     AppRoutingModule,
 	HttpClientModule,
-	FormsModule
+	FormsModule,
+	BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

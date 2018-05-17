@@ -18,7 +18,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.obsEmploy = this.employeeService.sortEmployeeListByAttribute('salary');
+//    this.obsEmploy = this.employeeService.sortEmployeeListByAttribute('salary');
     //    this.http.get('http://localhost:8080/employee-service/v1/employees/younger/than/25', {responseType: 'json'});
   }
 

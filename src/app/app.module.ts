@@ -12,12 +12,14 @@ import { DataService } from './data.service';
 import { EmployeeService } from './employee.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,

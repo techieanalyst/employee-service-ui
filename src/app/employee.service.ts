@@ -3,22 +3,23 @@ import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common
 import {Observable} from 'rxjs';
 import {Employee} from './employee';
 import {Address} from './address';
-import { map } from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  constructor(private http: HttpClient) {}
 
-  sortEmployeeListByAttribute(attribute: string): Observable<Employee[]> {
-    const httpHeaders = new HttpHeaders()
-      .set('Accept', 'application/json');
 
-    return this.http.get<Employee[]>('http://localhost:8080/employee-service/v1/employees/younger/than/' + attribute, {
-      headers: httpHeaders,
+  constructor(private http: HttpClient) {
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get('http://localhost:8080/employee-service/v1/employees/younger/than/23', {
+      headers: new HttpHeaders()
+      .set('Content-Type', 'application/json').append('Accept', 'application/json'),
       responseType: 'json'
-    }).pipe(map((response: any) => response.employees));
+    });
   }
 }
